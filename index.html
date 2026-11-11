@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salaire brut net — convertir son salaire brut en net, et le net en brut</title>
+<meta name="description" content="Application Android gratuite pour convertir un salaire brut en net, ou un net en brut : horaire, mensuel, annuel, net avant et après impôt, cadre ou non-cadre, SMIC intégré. Barème mis à jour automatiquement.">
+<meta property="og:title" content="Salaire brut net">
+<meta property="og:description" content="Du brut au net, et du net au brut : horaire, mensuel, annuel, avant et après impôt. Barème mis à jour automatiquement.">
+<meta property="og:image" content="https://olivier3dprint.github.io/SalaireBrutNet/images/partage.jpg">
+<link rel="icon" type="image/png" href="images/icone.png">
+<style>
+  :root {
+    --fond: #0f2342;
+    --texte: #eaf0f8;
+    --texte-att: #a9b9d0;
+    --bleu: #1E4F91;
+    --bleu-clair: #8fb6ea;
+    --vert: #1B7A3E;
+    --vert-clair: #6fd396;
+    --bordure: #24406b;
+    --panneau: #15305a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--fond);
+    color: var(--texte);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  main {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 20px 96px;
+  }
+  a { color: var(--vert-clair); }
+
+  .hero {
+    text-align: center;
+    padding: 84px 20px 64px;
+    background:
+      radial-gradient(circle at 50% 150px, rgba(47, 103, 179, 0.75) 0, rgba(47, 103, 179, 0.25) 160px, transparent 340px),
+      linear-gradient(to bottom, var(--bleu) 0%, var(--fond) 100%);
+  }
+  .icone {
+    width: 96px;
+    height: 96px;
+    border-radius: 22px;
+    margin: 0 auto 22px;
+    display: block;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+  }
+  h1 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin: 0 0 8px;
+  }
+  .tagline {
+    font-size: 1.15rem;
+    color: #d6e2f3;
+    max-width: 620px;
+    margin: 0 auto 22px;
+  }
+  .puces {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 0 28px;
+    padding: 0;
+    list-style: none;
+  }
+  .puces li {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  .puces .v { color: var(--vert-clair); }
+  .bouton-play {
+    display: inline-block;
+    padding: 14px 34px;
+    border-radius: 30px;
+    background: var(--vert);
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .bouton-play:hover,
+  .bouton-play:focus-visible {
+    background: #22914b;
+    transform: translateY(-1px);
+  }
+
+  h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin: 64px 0 22px;
+    text-align: center;
+  }
+
+  /* Galerie : défilement horizontal aimanté, comme sur la fiche Play. */
+  .galerie {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 4px 4px 14px;
+    margin: 0 -4px;
+  }
+  .galerie img {
+    flex: 0 0 auto;
+    width: 220px;
+    height: auto;
+    aspect-ratio: 1 / 2;
+    border-radius: 16px;
+    border: 1px solid var(--bordure);
+    scroll-snap-align: center;
+  }
+
+  .texte {
+    max-width: 720px;
+    margin: 0 auto;
+    color: var(--texte-att);
+  }
+  .texte p { margin: 0 0 12px; }
+  .texte strong { color: var(--texte); }
+
+  .grille {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 16px;
+  }
+  @media (min-width: 900px) {
+    .grille { grid-template-columns: repeat(3, 1fr); }
+  }
+  .fonctionnalite {
+    background: var(--panneau);
+    border: 1px solid var(--bordure);
+    border-radius: 14px;
+    padding: 18px 20px;
+  }
+  .fonctionnalite .titre {
+    font-weight: 700;
+    color: var(--vert-clair);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .fonctionnalite:nth-child(even) .titre { color: var(--bleu-clair); }
+  .fonctionnalite p {
+    margin: 0;
+    color: var(--texte-att);
+    font-size: 0.92rem;
+  }
+
+  .bandeau {
+    margin-top: 56px;
+    text-align: center;
+    padding: 26px 22px;
+    background: var(--panneau);
+    border: 1px solid var(--bordure);
+    border-radius: 14px;
+  }
+  .bandeau p { margin: 0; color: var(--texte-att); }
+  .bandeau p + p { margin-top: 10px; }
+  .prudence { font-size: 0.88rem; }
+
+  footer {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--bordure);
+    color: var(--texte-att);
+    font-size: 0.85rem;
+    text-align: center;
+  }
+  footer a { color: var(--texte-att); }
+  footer a:hover { color: var(--vert-clair); }
+
+  @media (max-width: 560px) {
+    .hero { padding-top: 56px; }
+    .icone { width: 80px; height: 80px; }
+    h1 { font-size: 2.1rem; }
+    .galerie img { width: 62vw; }
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <img class="icone" src="images/icone.png" alt="" width="96" height="96">
+  <h1>Salaire brut net</h1>
+  <p class="tagline">Convertissez votre salaire brut en net, ou retrouvez le brut à partir du net&nbsp;: à l'heure, au mois et à l'année, avant et après impôt.</p>
+
+  <ul class="puces">
+    <li class="v">Barème mis à jour automatiquement</li>
+    <li class="v">SMIC intégré</li>
+    <li>Cadre ou non-cadre</li>
+  </ul>
+  <br>
+  <a class="bouton-play" href="https://play.google.com/store/apps/details?id=com.salairebrutnet.app" target="_blank" rel="noopener">Télécharger sur Google Play</a>
+</header>
+
+<main>
+  <h2>Aperçu</h2>
+
+  <div class="galerie">
+    <img src="images/01-non-cadre.jpg" alt="Calculateur&nbsp;: 2 500 € brut mensuel, net avant et après impôt, à l'heure, au mois et à l'année" loading="lazy" width="540" height="1080">
+    <img src="images/02-cadre.jpg" alt="Situation d'un cadre avec mutuelle, prévoyance et titres-restaurant" loading="lazy" width="540" height="1080">
+    <img src="images/03-net-vers-brut.jpg" alt="Du net vers le brut&nbsp;: 2 000 € net après impôt donnent 2 621,61 € brut" loading="lazy" width="540" height="1080">
+    <img src="images/04-smic.jpg" alt="Bouton SMIC&nbsp;: le brut devient le SMIC à temps plein" loading="lazy" width="540" height="1080">
+    <img src="images/05-detail.jpg" alt="Détail ligne par ligne des cotisations salariales" loading="lazy" width="540" height="1080">
+    <img src="images/06-bareme.jpg" alt="Le barème en service&nbsp;: plafond, SMIC, taux et grille du taux neutre" loading="lazy" width="540" height="1080">
+  </div>
+
+  <h2>Brut, net&nbsp;: de quoi parle-t-on&nbsp;?</h2>
+  <div class="texte">
+    <p>Le <strong>brut</strong> est le salaire du contrat de travail. Le <strong>net avant impôt</strong> est ce qu'il reste après les cotisations salariales (retraite, CSG, CRDS, mutuelle…). Le <strong>net après impôt</strong> est ce qui arrive sur votre compte, une fois le prélèvement à la source retenu.</p>
+    <p>L'écart dépend de votre statut, de votre mutuelle, de votre prévoyance, de vos titres-restaurant et de votre taux d'impôt. L'application en tient compte et montre d'où vient chaque euro.</p>
+  </div>
+
+  <h2>Ce que fait l'application</h2>
+
+  <div class="grille">
+    <div class="fonctionnalite">
+      <div class="titre">Dans les deux sens</div>
+      <p>Neuf champs liés&nbsp;: brut, net avant impôt et net après impôt, à l'heure, au mois et à l'année. Tapez dans n'importe lequel, les autres suivent.</p>
+    </div>
+    <div class="fonctionnalite">
+      <div class="titre">SMIC intégré</div>
+      <p>Un bouton pour partir du SMIC, le brut exprimé en multiple du SMIC, et un avertissement si le salaire saisi est en dessous.</p>
+    </div>
+    <div class="fonctionnalite">
+      <div class="titre">Votre situation</div>
+      <p>Cadre ou non-cadre, temps plein ou temps partiel, mutuelle et prévoyance, titres-restaurant, Alsace-Moselle.</p>
+    </div>
+    <div class="fonctionnalite">
+      <div class="titre">Net après impôt</div>
+      <p>Avec votre taux personnalisé, le taux neutre calculé sur le net imposable du mois, ou sans impôt.</p>
+    </div>
+    <div class="fonctionnalite">
+      <div class="titre">Détail ligne par ligne</div>
+      <p>Chaque cotisation avec sa base et son taux, expliquée d'un simple appui. Le résumé se partage en texte.</p>
+    </div>
+    <div class="fonctionnalite">
+      <div class="titre">Toujours à jour</div>
+      <p>Les taux, plafonds et le SMIC viennent d'un barème mis à jour automatiquement, sans nouvelle version de l'application. Fonctionne aussi hors ligne.</p>
+    </div>
+  </div>
+
+  <div class="bandeau">
+    <p>Gratuit, sans compte et sans abonnement. Ce que vous saisissez reste sur votre téléphone&nbsp;: rien n'est envoyé. Une bannière publicitaire discrète finance l'application.</p>
+    <p class="prudence">Estimation pour un salarié du secteur privé en métropole, sur un mois type&nbsp;: seule votre fiche de paie fait foi. Application indépendante, sans lien avec l'administration.</p>
+  </div>
+
+  <footer>
+    <p><a href="confidentialite.html">Politique de confidentialité</a> · Contact&nbsp;: <a href="mailto:oliviertheandroidmaker@gmail.com">oliviertheandroidmaker@gmail.com</a></p>
+  </footer>
+</main>
+</body>
+</html>

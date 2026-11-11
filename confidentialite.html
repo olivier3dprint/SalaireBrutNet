@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Politique de confidentialité — Salaire brut net</title>
+<link rel="icon" type="image/png" href="images/icone.png">
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    margin: 0 auto; padding: 2rem 1.25rem 6rem; max-width: 46rem;
+    font: 16px/1.65 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #1a1f27; background: #f7f9fc;
+  }
+  h1 { font-size: 1.9rem; font-weight: 600; margin: 0 0 .3rem; }
+  h2 { font-size: 1.15rem; font-weight: 600; margin: 2.4rem 0 .6rem; }
+  .sub { color: #5d6878; margin: 0 0 2rem; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: .94rem; }
+  th, td { text-align: left; vertical-align: top; padding: .55rem .6rem; border-bottom: 1px solid #dde3ec; }
+  th { font-weight: 600; }
+  a { color: #1E4F91; }
+  footer { margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid #dde3ec; color: #5d6878; font-size: .9rem; }
+  @media (prefers-color-scheme: dark) {
+    body { color: #eaf0f8; background: #0f2342; }
+    .sub, footer { color: #a9b9d0; }
+    th, td { border-bottom-color: #24406b; }
+    a { color: #8fb6ea; }
+  }
+  a { overflow-wrap: anywhere; }
+  /* Sur téléphone, chaque ligne du tableau devient une fiche : 4 colonnes n'y tiennent pas. */
+  @media (max-width: 560px) {
+    table, tbody, tr, td { display: block; width: 100%; }
+    tr:first-child { display: none; }
+    tr { padding: .6rem 0; border-bottom: 1px solid #dde3ec; }
+    td { border: 0; padding: .15rem 0; }
+    td::before { content: attr(data-label) " : "; font-weight: 600; }
+  }
+  @media (max-width: 560px) and (prefers-color-scheme: dark) {
+    tr { border-bottom-color: #24406b; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Politique de confidentialité</h1>
+<p class="sub">Application <strong>Salaire brut net</strong> — dernière mise à jour&nbsp;: 11 novembre 2026</p>
+
+<h2>En résumé</h2>
+<p>
+  Salaire brut net est une calculatrice de salaire. Le salaire et la situation que vous
+  saisissez (statut, temps de travail, mutuelle, taux d'impôt…) restent
+  <strong>sur votre téléphone</strong>&nbsp;: ils ne sont jamais envoyés à l'éditeur ni à
+  qui que ce soit, et ne sont pas copiés dans la sauvegarde cloud. L'application ne crée
+  aucun compte, ne mesure pas l'audience et ne collecte aucune statistique d'utilisation.
+</p>
+<p>
+  Deux échanges réseau existent, détaillés plus bas&nbsp;: le <strong>téléchargement du
+  barème</strong>, un fichier public qui ne contient et ne reçoit aucune donnée vous
+  concernant, et la <strong>bannière publicitaire</strong>, qui implique un échange avec
+  Google.
+</p>
+
+<h2>Responsable du traitement</h2>
+<p>
+  Olivier Popiers — contact&nbsp;: <a href="mailto:oliviertheandroidmaker@gmail.com">oliviertheandroidmaker@gmail.com</a>
+</p>
+
+<h2>Données traitées</h2>
+<table>
+  <tr><th>Donnée</th><th>Finalité</th><th>Base légale</th><th>Destination</th></tr>
+  <tr>
+    <td data-label="Donnée">Salaire et situation saisis (brut ou net, statut, temps de travail, impôt, mutuelle, prévoyance, titres-restaurant)</td>
+    <td data-label="Finalité">Faire le calcul et, si vous le souhaitez, retrouver votre situation au lancement suivant</td>
+    <td data-label="Base légale">Exécution du service demandé</td>
+    <td data-label="Destination">Reste sur l'appareil, exclu de la sauvegarde cloud et du transfert vers un nouvel appareil</td>
+  </tr>
+  <tr>
+    <td data-label="Donnée">Réglages&nbsp;: thème, valeurs par défaut</td>
+    <td data-label="Finalité">Retrouver vos préférences</td>
+    <td data-label="Base légale">Exécution du service demandé</td>
+    <td data-label="Destination">Reste sur l'appareil, exclu de la sauvegarde cloud</td>
+  </tr>
+  <tr>
+    <td data-label="Donnée">Aucune (téléchargement du barème)</td>
+    <td data-label="Finalité">Tenir à jour les taux, plafonds et le SMIC</td>
+    <td data-label="Base légale">—</td>
+    <td data-label="Destination">Aucune donnée envoyée&nbsp;: voir ci-dessous</td>
+  </tr>
+  <tr>
+    <td data-label="Donnée">Identifiant publicitaire et données techniques de l'appareil</td>
+    <td data-label="Finalité">Afficher la bannière publicitaire qui finance l'application</td>
+    <td data-label="Base légale">Consentement (formulaire présenté au premier lancement, là où la loi l'exige)</td>
+    <td data-label="Destination">Google et ses partenaires publicitaires</td>
+  </tr>
+</table>
+
+<h2>Téléchargement du barème</h2>
+<p>
+  Les taux de cotisation, les plafonds et le SMIC ne sont pas écrits dans l'application&nbsp;:
+  elle télécharge automatiquement, au plus une fois par jour, ou quand vous le demandez
+  dans <em>Comment c'est calculé</em>, un fichier public, le barème, hébergé sur
+  GitHub Pages à l'adresse
+  <a href="https://olivier3dprint.github.io/SalaireBrutNet/bareme/v1/bareme.json">olivier3dprint.github.io/SalaireBrutNet/bareme/v1/bareme.json</a>.
+  Ce fichier est le même pour tout le monde.
+</p>
+<p>
+  La requête ne contient <strong>aucune donnée vous concernant</strong>&nbsp;: ni salaire, ni
+  situation, ni identifiant. Comme pour toute page web, GitHub, en tant qu'hébergeur, voit
+  l'adresse IP d'où vient la requête&nbsp;; l'éditeur n'y a pas accès.
+  <a href="https://docs.github.com/fr/site-policy/privacy-policies/github-general-privacy-statement">Déclaration de confidentialité de GitHub</a>.
+  Sans connexion, l'application fonctionne avec le dernier barème reçu ou avec la copie
+  incluse dans l'application.
+</p>
+
+<h2>Autorisations demandées</h2>
+<ul>
+  <li><strong>Accès à Internet et à l'état du réseau</strong>&nbsp;: télécharger le barème et
+      afficher la bannière publicitaire.</li>
+  <li><strong>Identifiant publicitaire</strong>&nbsp;: ajouté par la bibliothèque de publicité
+      de Google, pour la bannière.</li>
+</ul>
+<p>
+  Aucune autre autorisation sensible&nbsp;: ni localisation, ni contacts, ni fichiers, ni
+  appareil photo, ni micro.
+</p>
+
+<h2>Ce que l'application ne fait pas</h2>
+<ul>
+  <li>Aucun compte utilisateur, aucune inscription, aucun abonnement.</li>
+  <li>Aucun envoi de votre salaire ou de votre situation, à l'éditeur ou à un tiers.</li>
+  <li>Aucune localisation.</li>
+  <li>Aucune mesure d'audience, aucun rapport de plantage, aucune statistique
+      d'utilisation.</li>
+  <li>Aucune vente de données.</li>
+</ul>
+<p>
+  Le bouton <em>Partager</em> de l'écran de détail prépare un résumé en texte&nbsp;: c'est
+  vous qui choisissez l'application et le destinataire. L'application n'envoie rien
+  elle-même.
+</p>
+
+<h2>Publicité et consentement</h2>
+<p>
+  L'application affiche une bannière servie par Google AdMob en bas de l'écran, masquée
+  quand le clavier est ouvert. Au premier lancement, dans l'Espace économique européen,
+  au Royaume-Uni et en Suisse, un formulaire de consentement conforme au TCF est
+  présenté. <strong>Aucune requête publicitaire n'est faite avant votre réponse.</strong>
+</p>
+<p>
+  Vous pouvez modifier votre choix à tout moment depuis
+  <em>Réglages › Confidentialité et publicité</em>. Le retrait du consentement prend effet
+  immédiatement.
+</p>
+<p>
+  Traitement des données par Google&nbsp;:
+  <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a>.
+  Vous pouvez aussi réinitialiser ou supprimer votre identifiant publicitaire dans les
+  réglages d'Android (<em>Paramètres › Confidentialité › Annonces</em>, ou
+  <em>Google › Annonces</em> selon les téléphones).
+</p>
+
+<h2>Services tiers</h2>
+<ul>
+  <li><strong>Google AdMob</strong> — publicité.
+      <a href="https://policies.google.com/privacy">Politique de confidentialité</a></li>
+  <li><strong>GitHub Pages</strong> — hébergement du fichier public du barème, qui ne reçoit
+      aucune donnée vous concernant.
+      <a href="https://docs.github.com/fr/site-policy/privacy-policies/github-general-privacy-statement">Déclaration de confidentialité</a></li>
+</ul>
+
+<h2>Conservation et suppression</h2>
+<p>
+  Le salaire, la situation et les réglages sont stockés <strong>uniquement dans l'espace
+  privé de l'application sur votre appareil</strong>, et volontairement exclus de la
+  sauvegarde automatique d'Android. Ils sont effacés&nbsp;:
+</p>
+<ul>
+  <li>par <em>Remise à zéro</em> (menu de l'écran principal) pour la situation en cours&nbsp;;</li>
+  <li>en décochant <em>Garder la dernière situation</em> dans les réglages&nbsp;;</li>
+  <li>définitivement, à la désinstallation ou en vidant les données de l'application
+      depuis les réglages d'Android.</li>
+</ul>
+
+<h2>Vos droits</h2>
+<p>
+  Le Règlement général sur la protection des données vous donne des droits d'accès, de
+  rectification, d'effacement, de limitation et d'opposition, ainsi que le droit de
+  retirer votre consentement.
+</p>
+<p>
+  En pratique, l'éditeur ne détenant aucune donnée vous concernant, ces droits
+  s'exercent directement sur l'appareil&nbsp;: retirer le consentement publicitaire depuis
+  les réglages de l'application, effacer la situation enregistrée, vider ses données ou
+  la désinstaller. Pour toute question, écrivez à
+  <a href="mailto:oliviertheandroidmaker@gmail.com">oliviertheandroidmaker@gmail.com</a>.
+</p>
+<p>
+  Vous pouvez introduire une réclamation auprès de la
+  <a href="https://www.cnil.fr">CNIL</a>.
+</p>
+
+<h2>Mineurs</h2>
+<p>
+  Salaire brut net s'adresse aux adultes et ne collecte pas sciemment de données
+  concernant des enfants.
+</p>
+
+<h2>Modifications</h2>
+<p>
+  Cette politique peut évoluer. La date de dernière mise à jour figure en haut de la
+  page&nbsp;; les changements importants seront signalés dans les notes de version de
+  l'application.
+</p>
+
+<footer>
+  <p><a href="index.html">Salaire brut net</a></p>
+</footer>
+
+</body>
+</html>

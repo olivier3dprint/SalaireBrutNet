@@ -7,7 +7,9 @@ https://olivier3dprint.github.io/SalaireBrutNet/
 |---|---|
 | `app-ads.txt` | Déclaration AdMob de l'éditeur. |
 | `bareme/v1/bareme.json` | Barème légal (schéma 1), **publié automatiquement** par le workflow du dépôt privé `SalaireBrutNetSources`, après un contrôle croisé réussi avec le moteur de l'URSSAF. Ne pas le modifier à la main. |
-| `index.html`, `confidentialite.html` | Page d'accueil et politique de confidentialité (à venir). |
+| `index.html` | Page d'accueil. |
+| `confidentialite.html` | Politique de confidentialité, ouverte par l'application (`privacy_policy_url`). |
+| `images/` | Icône, captures (réduites des visuels Play Store) et image de partage. |
 | `.nojekyll` | Fichiers servis tels quels, sans traitement Jekyll. |
 
 Aucune donnée personnelle ici : l'application télécharge `bareme.json` sans rien envoyer.
